@@ -2,6 +2,7 @@
 
 import os
 import random
+import discord
 
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -36,6 +37,18 @@ async def wholesome(ctx):
 
     response = random.choice(wholesome_quotes)
     await ctx.send(response)
+
+# Tell cheems to log off
+@bot.command(name='cheems-sleep', help='Cheems will go to bed')
+async def sleep(ctx):
+    await ctx.send(cheemsify("I go sleep now"))
+    await bot.logout()
+
+# Cheems will send a king photo
+@bot.command(name='cheems-king', help='Cheems will help a king out')
+async def king(ctx):
+    await ctx.send(file=discord.File('king.jpg'))
+
 
 # Cheemsifies the message
 def cheemsify(msg):
